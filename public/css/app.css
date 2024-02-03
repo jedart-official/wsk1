@@ -1,0 +1,241 @@
+.sidebar {
+    min-width: 350px;
+    background-color: #cbd1db;
+    height: 100vh;
+}
+
+.office {
+    display: flex;
+    align-items: center;
+}
+
+.office .content {
+    width: 100%;
+}
+
+.modal-auth {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.44);
+}
+
+.seat {
+    position: relative;
+    z-index: 5;
+}
+
+.auth {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e7eb;
+    gap: 30px;
+    padding: 100px 200px;
+    align-items: center;
+}
+
+.auth button {
+    background-color: #9ca3af;
+    padding: 15px 30px;
+    border-radius: 8px;
+}
+
+.auth input {
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.avatars {
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.avatars__item {
+    height: 80px;
+    width: 80px;
+    transition: 0.2s all ease;
+    cursor: pointer;
+}
+
+.avatars__item img {
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+
+    position: relative;
+}
+
+.profile {
+    display: flex;
+    gap: 30px;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 3px solid white;
+}
+
+.smooth {
+    transition: 0.3s all;
+}
+
+.rooms {
+    padding: 10px;
+}
+
+.profile__logout {
+    background-color: #9ca3af;
+    padding: 10px 30px;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.profile__photo {
+    height: 100px;
+    width: 100px;
+}
+
+.profile__photo img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile__name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.office-1 {
+    height: 400px;
+    width: 450px;
+    fill: yellow;
+}
+
+.meeting-room {
+    height: 400px;
+    width: 690px;
+    fill: #e6957e;
+}
+
+.desk-room {
+    height: 330px;
+    width: 390px;
+    fill: #55b7eb;
+}
+
+.kitchen-room {
+    height: 275px;
+    width: 825px;
+    fill: #51e276;
+}
+
+.break-room {
+    height: 450px;
+    width: 430px;
+    fill: #acdb70;
+}
+
+.office-2 {
+    height: 580px;
+    width: 670px;
+    fill: #5f8267;
+}
+
+.silent-room-3 {
+    height: 270px;
+    width: 490px;
+    fill: #54c7bd;
+}
+
+.silent-room-2 {
+    height: 155px;
+    width: 225px;
+    fill: #54c7bd;
+}
+
+.silent-room-1 {
+    height: 315px;
+    width: 390px;
+    fill: #54c7bd;
+}
+
+.open-office-part {
+    height: 450px;
+    width: 890px;
+}
+
+.open-office-room {
+
+    fill: #5f8267;
+}
+
+.room {
+    opacity: 0.1;
+    transition: 0.2s all;
+}
+
+.room:hover {
+    opacity: 0.5;
+}
+.room__users {
+    display: flex;
+    flex-direction: column;
+
+}
+.room__user {
+    padding: 5px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.room__user img {
+    height: 30px;
+    width: 30px;
+}
+
+.alert {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.47);
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.alert__body {
+    padding: 100px 200px;
+    border-radius: 10px;
+    background-color: #e5e7eb;
+}
+
+.alert__close {
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% + 150px);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #9ca3af;
+}
+
+
+.chat {
+    width: 100%;
+    height: 300px;
+    background-color: #f1f1f1;
+    position: absolute;
+    bottom: 0;
+}
