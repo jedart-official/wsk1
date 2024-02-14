@@ -31,7 +31,7 @@ class AuthController extends Controller
                     'user_id' => $place['user']['id'],
                     'x' => $place['user']['x'],
                     'y' => $place['user']['y'],
-                    'username' => $place['user']['name'],
+                    'name' => $place['user']['name'],
                     'imagePath' =>  $place['user']['avatar']['path'],
                 ] ;
             }, $takenPlaces);

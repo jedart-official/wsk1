@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\app;
 
 use App\Events\ChangePositionEvent;
+use App\Events\RoomEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Avatar;
 use App\Models\Place;
@@ -47,11 +48,51 @@ class PlaceController extends Controller
 
         $isAllowRoom->user_id = $user_id;
         $isAllowRoom->save();
-        $user = User::query()->find($user_id);
+        $user = User::query()->with('avatar')->find($user_id);
         $user->x = $pointX;
         $user->y = $pointY;
-        $user->room_id = $room_id;
+
+        if($user->room_id != $room_id){
+            $user->room_id = $room_id;
+            $rooms = $this->getRooms();
+            event(new RoomEvent($rooms));
+        }
+
+
+
         $user->save();
+        event(new ChangePositionEvent($user_id, $pointX, $pointY, $user->avatar->path, $user->room_id, $user->name));
         return response()->json(['status' => true, 'message' => 'Success']);
+    }
+
+
+    private function getRooms(): array
+    {
+        $rooms = Room::all();
+        $rooms->load('places.user.avatar');
+        $result = [];
+
+        foreach ($rooms as $room){
+            $roomId = $room->id;
+            $roomUsers = [];
+
+            foreach ($room->places as $place){
+                if($place->user){
+                    $user = $place->user;
+                    $roomUsers[] = [
+                        'name' => $user->name,
+                        'imagePath'=> $user->avatar->path
+                    ];
+                }
+            }
+            $result[] = [
+                'id' => $roomId,
+                'places' => count($room->places),
+                'name' => $room->name,
+                'users' => $roomUsers,
+            ];
+        }
+
+        return $result;
     }
 }
