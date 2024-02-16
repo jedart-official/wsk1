@@ -21,6 +21,13 @@ class AuthController extends Controller
         $id = Session::get('user_id');
         if($id){
             $user = User::query()->with('avatar')->find($id);
+            dd(now()->subMinutes());
+
+            if ($user->last_activity_at > now()->subMinutes()){
+                $user->delete();
+                Session::forget(['user_id']);
+            }
+
             $rooms = Room:: all();
             $rooms->load('places.user');
 

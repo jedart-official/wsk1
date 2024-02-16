@@ -24,6 +24,7 @@ class RegisterController extends Controller
         $user = User::query()->create([
             'name' => $request['username'],
             'avatar_id' => $request['avatar'],
+            'last_activity_at' => now(),
         ]);
         if ($user) {
             Session::put('user_id', $user->id);

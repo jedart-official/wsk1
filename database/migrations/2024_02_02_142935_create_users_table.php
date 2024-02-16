@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('room_id')->nullable();
             $table->integer('x')->nullable();
             $table->integer('y')->nullable();
+            $table->timestamp('last_activity_at')->useCurrent();
             $table->timestamps();
 
             $table->foreign('room_id')->on('rooms')->references('id');

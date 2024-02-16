@@ -832,32 +832,20 @@
 @vite('resources/js/app.js')
 <script>
 
+    window.addEventListener('beforeunload', (event) => {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const data = new FormData();
+        data.append('_token', csrfToken);
+        navigator.sendBeacon('/session/activity', data);
+    });
+
+
+
     document.addEventListener('DOMContentLoaded', () => {
         const places = <?= json_encode($places) ?>;
         const user = <?= json_encode($user) ?>;
         startOfiice(places, user)
     })
-
-    function sendMessage() {
-        const chatForm = document.querySelector('.chat__input');
-        const chatInput = chatForm.querySelector('input')
-        chatForm.addEventListener('submit', async (e) => {
-            e.preventDefault()
-            return await fetch('/send/message', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                body: JSON.stringify({message: chatInput.value})
-            }).then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    return data;
-                });
-        })
-
-    }
 
 
 </script>

@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'avatar_id',
-        'x','y', 'room_id'
+        'x','y', 'room_id', 'last_activity_at'
     ];
 
     protected static function boot(): void
